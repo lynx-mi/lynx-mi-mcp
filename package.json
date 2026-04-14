@@ -1,0 +1,48 @@
+{
+  "name": "@lynx-mi/mcp-server",
+  "version": "1.0.0",
+  "description": "MCP server for Lynx Market Intelligence — query insider trades, sentiment, and network data from AI assistants",
+  "license": "MIT",
+  "author": "Lynx MI <support@lynx-mi.com>",
+  "homepage": "https://lynx-mi.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/evandanek-ai/lynx-mi-mcp"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "insider-trading",
+    "market-intelligence",
+    "stock-market",
+    "ai-tools",
+    "claude",
+    "cursor",
+    "lynx-mi"
+  ],
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "lynx-mi-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "start": "node dist/index.js",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
