@@ -7,14 +7,14 @@
  * data to AI coding assistants (Claude, Cursor, Windsurf, etc.).
  *
  * Usage:
- *   LYNX_MI_API_KEY=sk_live_... npx @lynx-mi/mcp-server
+ *   LYNX_MI_API_KEY=sk_live_... npx lynx-mi-mcp-server
  *
  * Or configure in claude_desktop_config.json:
  *   {
  *     "mcpServers": {
  *       "lynx-mi": {
  *         "command": "npx",
- *         "args": ["-y", "@lynx-mi/mcp-server"],
+ *         "args": ["-y", "lynx-mi-mcp-server"],
  *         "env": { "LYNX_MI_API_KEY": "sk_live_..." }
  *       }
  *     }
@@ -26,7 +26,7 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { LynxClient } from "./client.js";
 import { TOOLS, handleToolCall } from "./tools.js";
 
-// ─── Configuration ───────────────────────────────────────────
+// ——— Configuration ———————————————————————————————————
 
 const API_KEY = process.env.LYNX_MI_API_KEY;
 const BASE_URL = process.env.LYNX_MI_BASE_URL; // Optional override
@@ -46,7 +46,7 @@ if (!API_KEY) {
   process.exit(1);
 }
 
-// ─── Server Setup ────────────────────────────────────────────
+// ——— Server Setup ————————————————————————————————————
 
 const client = new LynxClient(API_KEY, BASE_URL);
 
@@ -55,7 +55,7 @@ const server = new McpServer({
   version: "1.0.0",
 });
 
-// ─── Register Tools ──────────────────────────────────────────
+// ——— Register Tools ——————————————————————————————————
 
 for (const tool of TOOLS) {
   server.tool(
@@ -89,7 +89,7 @@ for (const tool of TOOLS) {
   );
 }
 
-// ─── Start Server ────────────────────────────────────────────
+// ——— Start Server ————————————————————————————————————
 
 async function main() {
   const transport = new StdioServerTransport();

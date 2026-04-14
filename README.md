@@ -4,7 +4,7 @@
 >
 > Give your AI coding assistant real-time access to SEC insider trading data, market sentiment, political intelligence, and more.
 
-[![npm version](https://img.shields.io/npm/v/@lynx-mi/mcp-server)](https://www.npmjs.com/package/@lynx-mi/mcp-server)
+[![npm version](https://img.shields.io/npm/v/lynx-mi-mcp-server)](https://www.npmjs.com/package/lynx-mi-mcp-server)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ---
@@ -41,7 +41,7 @@ Add this to your `claude_desktop_config.json`:
   "mcpServers": {
     "lynx-mi": {
       "command": "npx",
-      "args": ["-y", "@lynx-mi/mcp-server"],
+      "args": ["-y", "lynx-mi-mcp-server"],
       "env": {
         "LYNX_MI_API_KEY": "sk_live_your_key_here"
       }
@@ -57,7 +57,7 @@ Go to **Settings → MCP Servers → Add new server** and use:
 ```json
 {
   "command": "npx",
-  "args": ["-y", "@lynx-mi/mcp-server"],
+  "args": ["-y", "lynx-mi-mcp-server"],
   "env": {
     "LYNX_MI_API_KEY": "sk_live_your_key_here"
   }
@@ -72,7 +72,7 @@ Add to your MCP configuration:
 {
   "lynx-mi": {
     "command": "npx",
-    "args": ["-y", "@lynx-mi/mcp-server"],
+    "args": ["-y", "lynx-mi-mcp-server"],
     "env": {
       "LYNX_MI_API_KEY": "sk_live_your_key_here"
     }
@@ -89,7 +89,7 @@ Add to your `~/.gemini/settings.json`:
   "mcpServers": {
     "lynx-mi": {
       "command": "npx",
-      "args": ["-y", "@lynx-mi/mcp-server"],
+      "args": ["-y", "lynx-mi-mcp-server"],
       "env": {
         "LYNX_MI_API_KEY": "sk_live_your_key_here"
       }

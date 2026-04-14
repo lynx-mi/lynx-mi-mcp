@@ -1,5 +1,5 @@
 {
-  "name": "@lynx-mi/mcp-server",
+  "name": "lynx-mi-mcp-server",
   "version": "1.0.0",
   "description": "MCP server for Lynx Market Intelligence — query insider trades, sentiment, and network data from AI assistants",
   "license": "MIT",
@@ -23,7 +23,7 @@
   "type": "module",
   "main": "dist/index.js",
   "bin": {
-    "lynx-mi-mcp": "dist/index.js"
+    "lynx-mi-mcp-server": "dist/index.js"
   },
   "files": [
     "dist"
