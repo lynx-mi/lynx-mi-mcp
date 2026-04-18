@@ -1,0 +1,10 @@
+{
+  "$schema": "https://glama.ai/mcp/schemas/server.json",
+  "name": "lynx-mi-mcp",
+  "description": "MCP server for Lynx Market Intelligence — query insider trades, sentiment, and network data directly from your AI assistants",
+  "type": "mcp_server",
+  "status": "production",
+  "maintainers": ["evand"],
+  "keywords": ["mcp", "finance", "insider-trading", "politics", "market-data", "lynx-mi"],
+  "transport": ["stdio"]
+}
