@@ -4,7 +4,7 @@
 >
 > Give your AI coding assistant real-time access to SEC insider trading data, market sentiment, political intelligence, and more.
 
-[![npm version](https://img.shields.io/npm/v/lynx-mi-mcp-server)](https://www.npmjs.com/package/lynx-mi-mcp-server)
+[![npm version](https://img.shields.io/npm/v/@lynx-market-intel/mcp-server)](https://www.npmjs.com/package/@lynx-market-intel/mcp-server)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ---
@@ -57,7 +57,7 @@ Go to **Settings → MCP Servers → Add new server** and use:
 ```json
 {
   "command": "npx",
-  "args": ["-y", "lynx-mi-mcp-server"],
+  "args": ["-y", "@lynx-mi/mcp-server"],
   "env": {
     "LYNX_MI_API_KEY": "sk_live_your_key_here"
   }
@@ -72,7 +72,7 @@ Add to your MCP configuration:
 {
   "lynx-mi": {
     "command": "npx",
-    "args": ["-y", "lynx-mi-mcp-server"],
+    "args": ["-y", "@lynx-mi/mcp-server"],
     "env": {
       "LYNX_MI_API_KEY": "sk_live_your_key_here"
     }
@@ -89,7 +89,7 @@ Add to your `~/.gemini/settings.json`:
   "mcpServers": {
     "lynx-mi": {
       "command": "npx",
-      "args": ["-y", "lynx-mi-mcp-server"],
+      "args": ["-y", "@lynx-mi/mcp-server"],
       "env": {
         "LYNX_MI_API_KEY": "sk_live_your_key_here"
       }
@@ -140,6 +140,14 @@ Add to your `~/.gemini/settings.json`:
 | `get_nexus_score` | Combined political + lobbying + insider score |
 | `get_congressional_trades` | US Congress member stock trades |
 | `get_lobbying_activity` | Corporate lobbying reports & spend |
+
+## Time-Series & Supply Chain Intelligence
+
+In addition to real-time insider trading, Lynx MI provides deep, historical time-series data and relational graphs to power advanced AI quantitative analysis:
+
+- **Congressional & Executive Trading (STOCK Act)**: Query historical time-series data of stock transactions by US Senators, Representatives, and their families. Track portfolio changes aligned with specific legislative events or committee assignments to uncover political information advantages.
+- **Corporate Lobbying Expenditures (LDA)**: Access quarter-by-quarter historical time-series of lobbying spend. Track which bills and government agencies specific companies are targeting, offering predictive insights into upcoming regulatory headwinds or tailwinds.
+- **Supplier & Customer Supply Chain Graph**: Extract complex B2B dependencies. Map out tier-1 and tier-2 suppliers, key customer relationships, and revenue exposure. If one company inside the network crashes or secures a massive contract, your AI assistant can trace the direct financial impact down the supply chain using our Nexus endpoints.
 
 ## Example Conversations
 

@@ -1,5 +1,5 @@
 {
-  "name": "lynx-mi-mcp-server",
+  "name": "@lynx-market-intel/mcp-server",
   "version": "1.0.0",
   "description": "MCP server for Lynx Market Intelligence — query insider trades, sentiment, and network data from AI assistants",
   "license": "MIT",
@@ -7,7 +7,7 @@
   "homepage": "https://lynx-mi.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/evandanek-ai/lynx-mi-mcp"
+    "url": "https://github.com/lynx-mi/lynx-mi-mcp"
   },
   "keywords": [
     "mcp",
@@ -28,6 +28,9 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsc",
     "dev": "tsx src/index.ts",
@@ -35,7 +38,8 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.12.1"
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

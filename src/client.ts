@@ -5,7 +5,7 @@
  * using the user's personal API key (X-API-Key header).
  */
 
-const DEFAULT_BASE_URL = "https://api.smartmoneyalpha.com";
+const DEFAULT_BASE_URL = "https://api.lynx-mi.com";
 
 export class LynxClient {
   private apiKey: string;

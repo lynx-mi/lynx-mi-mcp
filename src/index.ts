@@ -26,7 +26,7 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { LynxClient } from "./client.js";
 import { TOOLS, handleToolCall } from "./tools.js";
 
-// ——— Configuration ———————————————————————————————————
+// ─── Configuration ───────────────────────────────────────────
 
 const API_KEY = process.env.LYNX_MI_API_KEY;
 const BASE_URL = process.env.LYNX_MI_BASE_URL; // Optional override
@@ -46,7 +46,7 @@ if (!API_KEY) {
   process.exit(1);
 }
 
-// ——— Server Setup ————————————————————————————————————
+// ─── Server Setup ────────────────────────────────────────────
 
 const client = new LynxClient(API_KEY, BASE_URL);
 
@@ -55,13 +55,43 @@ const server = new McpServer({
   version: "1.0.0",
 });
 
-// ——— Register Tools ——————————————————————————————————
+import { z } from "zod";
+
+// ─── Register Tools ──────────────────────────────────────────
 
 for (const tool of TOOLS) {
+  const shape: Record<string, z.ZodTypeAny> = {};
+  for (const [key, prop] of Object.entries((tool.inputSchema.properties || {}) as Record<string, any>)) {
+    let zType: z.ZodTypeAny;
+    if (prop.type === "string") {
+      if (prop.enum && Array.isArray(prop.enum) && prop.enum.length > 0) {
+        zType = z.enum(prop.enum as [string, ...string[]]);
+      } else {
+        zType = z.string();
+      }
+    } else if (prop.type === "number") {
+      zType = z.number();
+    } else if (prop.type === "boolean") {
+      zType = z.boolean();
+    } else {
+      zType = z.any();
+    }
+    
+    if (prop.description) {
+      zType = zType.describe(prop.description);
+    }
+    
+    if (!tool.inputSchema.required?.includes(key)) {
+      zType = zType.optional();
+    }
+    
+    shape[key] = zType;
+  }
+
   server.tool(
     tool.name,
     tool.description,
-    tool.inputSchema.properties as Record<string, unknown>,
+    shape,
     async (args: Record<string, unknown>) => {
       const resultText = await handleToolCall(client, tool.name, args);
 
@@ -89,7 +119,7 @@ for (const tool of TOOLS) {
   );
 }
 
-// ——— Start Server ————————————————————————————————————
+// ─── Start Server ────────────────────────────────────────────
 
 async function main() {
   const transport = new StdioServerTransport();
