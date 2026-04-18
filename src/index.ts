@@ -28,13 +28,13 @@ import { TOOLS, handleToolCall } from "./tools.js";
 
 // ─── Configuration ───────────────────────────────────────────
 
-const API_KEY = process.env.LYNX_MI_API_KEY;
+const API_KEY = process.env.LYNX_MI_API_KEY || "missing_api_key";
 const BASE_URL = process.env.LYNX_MI_BASE_URL; // Optional override
 
-if (!API_KEY) {
+if (API_KEY === "missing_api_key") {
   console.error(
     "╔══════════════════════════════════════════════════════════╗\n" +
-      "║  ERROR: LYNX_MI_API_KEY environment variable not set   ║\n" +
+      "║  WARNING: LYNX_MI_API_KEY environment variable not set ║\n" +
       "║                                                        ║\n" +
       "║  Get your API key at https://lynx-mi.com/settings      ║\n" +
       "║  (requires Advanced subscription or higher)            ║\n" +
@@ -43,7 +43,10 @@ if (!API_KEY) {
       '║    "env": { "LYNX_MI_API_KEY": "sk_live_..." }         ║\n' +
       "╚══════════════════════════════════════════════════════════╝"
   );
-  process.exit(1);
+  // Do NOT process.exit(1) here! 
+  // Glama and other MCP registries need to be able to start the server 
+  // without an API key just to inspect the tools schema (tools/list).
+  // Native API calls will simply return 403 if executed.
 }
 
 // ─── Server Setup ────────────────────────────────────────────

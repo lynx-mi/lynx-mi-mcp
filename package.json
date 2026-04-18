@@ -1,6 +1,6 @@
 {
   "name": "@lynx-market-intel/mcp-server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "MCP server for Lynx Market Intelligence — query insider trades, sentiment, and network data from AI assistants",
   "license": "MIT",
   "author": "Lynx MI <support@lynx-mi.com>",
