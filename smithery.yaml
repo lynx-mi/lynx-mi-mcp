@@ -1,0 +1,18 @@
+startCommand:
+  type: stdio
+configSchema:
+  type: object
+  required:
+    - LYNX_MI_API_KEY
+  properties:
+    LYNX_MI_API_KEY:
+      type: string
+      description: "Personal API Key from lynx-mi.com/settings (requires Advanced plan)"
+commandFunction: |-
+  (config) => ({
+    command: 'npx',
+    args: ['-y', '@lynx-market-intel/mcp-server'],
+    env: {
+      LYNX_MI_API_KEY: config.LYNX_MI_API_KEY
+    }
+  })
